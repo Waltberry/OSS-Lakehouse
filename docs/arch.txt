@@ -1,0 +1,1 @@
+Raw CSV -> Delta Bronze (s3a://bronze) -> Silver (s3a://silver) -> Gold (s3a://gold) -> MLflow artifacts in s3://mlflow
