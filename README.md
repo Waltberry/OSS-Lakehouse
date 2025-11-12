@@ -6,7 +6,7 @@
 - MLflow server + artifacts in MinIO
 - Jupyter (PySpark + delta-spark + Great Expectations)
 
-**Skills shown**
+**Breakdown**
 - Scala batch ingest → **Delta Bronze** on S3A (MinIO), **schema evolution**
 - PySpark curation → **Silver/Gold**, simple data-quality
 - MLflow-ready env; one-command Docker bring-up
