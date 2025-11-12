@@ -1,13 +1,13 @@
-[0m[[0m[0mdebug[0m] [0m[0mPackaging /work/target/scala-2.12/transforms-core_2.12-0.1.0.jar ...[0m
-[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /work/target/scala-2.12/classes/com[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com/example[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /work/target/scala-2.12/classes/com/example[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com/example/lakehouse[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /work/target/scala-2.12/classes/com/example/lakehouse[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com/example/lakehouse/Ingest$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /work/target/scala-2.12/classes/com/example/lakehouse/Ingest$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com/example/lakehouse/Ingest.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /work/target/scala-2.12/classes/com/example/lakehouse/Ingest.class[0m
-[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
+[debug] Packaging /work/target/scala-2.12/transforms-core_2.12-0.1.0.jar ...
+[debug] Input file mappings:
+[debug] 	com
+[debug] 	  /work/target/scala-2.12/classes/com
+[debug] 	com/example
+[debug] 	  /work/target/scala-2.12/classes/com/example
+[debug] 	com/example/lakehouse
+[debug] 	  /work/target/scala-2.12/classes/com/example/lakehouse
+[debug] 	com/example/lakehouse/Ingest$.class
+[debug] 	  /work/target/scala-2.12/classes/com/example/lakehouse/Ingest$.class
+[debug] 	com/example/lakehouse/Ingest.class
+[debug] 	  /work/target/scala-2.12/classes/com/example/lakehouse/Ingest.class
+[debug] Done packaging.

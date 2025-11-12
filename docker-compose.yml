@@ -37,11 +37,14 @@ services:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - MLFLOW_S3_ENDPOINT_URL=${MLFLOW_S3_ENDPOINT_URL}
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_EC2_METADATA_DISABLED=true
+      - AWS_S3_FORCE_PATH_STYLE=true
       - PYSPARK_PYTHON=python
       - PYSPARK_DRIVER_PYTHON=jupyter
       - PYSPARK_DRIVER_PYTHON_OPTS=lab --NotebookApp.token='' --NotebookApp.password=''
     command: >
-      bash -lc "pip install --no-cache-dir delta-spark==3.1.0 great_expectations mlflow &&
+      bash -lc "pip install --no-cache-dir delta-spark==3.1.0 great_expectations mlflow boto3 &&
                 start-notebook.sh --NotebookApp.token=''"
     networks: [lakehouse]
     volumes:
@@ -80,16 +83,35 @@ services:
     container_name: mlflow
     depends_on: [minio]
     env_file: .env
-    command: >
-      bash -lc "pip install --no-cache-dir mlflow boto3 &&
-                mlflow server --backend-store-uri sqlite:///mlruns.db
-                             --default-artifact-root s3://mlflow
-                             --host 0.0.0.0 --port 5000"
-    ports: ["5000:5000"]
+    environment:
+      # Make sure these exist in your .env (or set here)
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-minioadmin}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-minioadmin}
+      MLFLOW_S3_ENDPOINT_URL: ${MLFLOW_S3_ENDPOINT_URL:-http://minio:9000}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      AWS_EC2_METADATA_DISABLED: "true"
+    working_dir: /mlflow
     volumes:
       - ./mlflow:/mlflow
-    working_dir: /mlflow
+    ports: ["5000:5000"]
+    command:
+      [
+        "bash","-lc",
+        "pip install --no-cache-dir mlflow boto3 && \
+         exec mlflow server \
+          --backend-store-uri sqlite:///mlruns.db \
+          --default-artifact-root s3://mlflow \
+          --host 0.0.0.0 --port 5000 \
+          --allowed-hosts '*' --cors-allowed-origins '*'"
+      ]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:5000/').read(1)"]
+      interval: 10s
+      timeout: 3s
+      retries: 20
     networks: [lakehouse]
+
+
 
   scala-builder:
     image: sbtscala/scala-sbt:eclipse-temurin-jammy-11.0.21_9_1.9.7_2.12.18

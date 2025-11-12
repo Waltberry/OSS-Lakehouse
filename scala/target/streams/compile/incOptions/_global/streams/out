@@ -1,10 +1,10 @@
-[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /work/target/scala-2.12/classes.bak[0m
-[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /work/target/scala-2.12/classes.bak[0m
-[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Ingest.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Ingest$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /work/target/scala-2.12/classes.bak[0m
+[debug] Created transactional ClassFileManager with tempDir = /work/target/scala-2.12/classes.bak
+[debug] About to delete class files:
+[debug] We backup class files:
+[debug] Created transactional ClassFileManager with tempDir = /work/target/scala-2.12/classes.bak
+[debug] About to delete class files:
+[debug] We backup class files:
+[debug] Registering generated classes:
+[debug] 	Ingest.class
+[debug] 	Ingest$.class
+[debug] Removing the temporary directory used for backing up class files: /work/target/scala-2.12/classes.bak
