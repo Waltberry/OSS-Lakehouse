@@ -43,14 +43,20 @@ services:
       - PYSPARK_PYTHON=python
       - PYSPARK_DRIVER_PYTHON=jupyter
       - PYSPARK_DRIVER_PYTHON_OPTS=lab --NotebookApp.token='' --NotebookApp.password=''
+    
+    working_dir: /home/jovyan/work
     command: >
       bash -lc "pip install --no-cache-dir delta-spark==3.1.0 great_expectations mlflow boto3 &&
                 start-notebook.sh --NotebookApp.token=''"
     networks: [lakehouse]
     volumes:
-      - ./py:/work/py
-      - ./data:/work/data
-      - ./scripts:/work/scripts 
+      - ./py:/home/jovyan/work/py
+      - ./data:/home/jovyan/work/data
+      - ./scripts:/home/jovyan/work/scripts
+
+      # - ./py:/work/py
+      # - ./data:/work/data
+      # - ./scripts:/work/scripts 
 
   minio:
     image: minio/minio:latest

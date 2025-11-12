@@ -1,0 +1,68 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.env.*
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+.jupyter/lab/workspaces/
+
+# Scala / sbt / Metals
+scala/target/
+scala/project/target/
+scala/project/project/
+.bsp/
+.metals/
+*.class
+
+# Spark local stuff
+spark-warehouse/
+metastore_db/
+derby.log
+**/.sparkStaging/
+
+# Data lake outputs (keep only small raw samples)
+data/bronze/
+data/silver/
+data/gold/
+data/tmp/
+!data/raw/
+!data/raw/*.csv   # keep demo CSVs you want in the repo
+
+# MLflow backend store & logs
+mlflow/mlruns/
+mlflow/*.db*
+mlflow/*.sqlite*
+mlflow/*-journal
+mlflow/*.log
+
+# MinIO persisted data
+minio/data/
+
+# Caches
+**/.ivy2/
+**/.sbt/
+
+# Build outputs / archives
+dist/
+build/
+*.tar.gz
+*.zip
+
+# Great Expectations (local/uncommitted)
+quality/great_expectations/uncommitted/
+
+# If you vendor connector JARs, keep them.
+# Otherwise you may ignore built jars. Uncomment if desired:
+# jars/*.jar
